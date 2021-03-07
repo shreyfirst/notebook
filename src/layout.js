@@ -52,7 +52,7 @@ const Layout = ({ xl, ...props }) => {
   const path = props.location.pathname
   const home = path === '/'
   const base = '@simplershreh/notebook'
-  const name = home ? base : getName(path)
+  const name = "Vote Shrey For IHS ASB President"
   const counterColor = theme.colors.secondary.replace('#', '%23')
 
   return (
