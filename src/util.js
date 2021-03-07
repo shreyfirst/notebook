@@ -3,6 +3,8 @@ import { isEmpty } from 'lodash'
 export const getName = path => {
 
     var hi = path
+    hi = hi.replace('head_',' ')
+    hi = hi.replace('norm_',' ')
     hi = hi.replace(/\_/g,' ')
     hi = hi.replace(/\//g,'')
     hi = hi.replace(/\=/g,'')

@@ -15,11 +15,11 @@ export const Nav = () => {
   const data = useStaticQuery(pages)
   const nodes = filter(
     data.allSitePage.nodes,
-    ({ path }) => path !== '/' && !path.includes('404') && !path.includes('=')
+    ({ path }) => path !== '/' && !path.includes('404') && path.includes('norm_')
   )
   const button_nodes = filter(
     data.allSitePage.nodes,
-    ({ path }) => path !== '/' && !path.includes('404') && path.includes('=')
+    ({ path }) => path !== '/' && !path.includes('404') && path.includes('head_')
   )
 
   const links = orderBy(
