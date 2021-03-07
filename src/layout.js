@@ -55,9 +55,9 @@ const Layout = ({ xl, ...props }) => {
   const name = "Vote Shrey For IHS ASB President"
   const counterColor = theme.colors.secondary.replace('#', '%23')
   var p = path
-  if (path.includes("404")){
+  if (p.includes("404")){
     p = "404"
-  } else if (path === '/') {
+  } else if (p === '/') {
     p = "Home"
   }
 

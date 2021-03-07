@@ -3,7 +3,7 @@ import { isEmpty } from 'lodash'
 export const getName = path => {
   if (path.includes('404') || (path==='/')) {
     return path.replaceAll('/','')
-  } else {
+  } else {  
     var hi = path
     hi = hi.replaceAll('_',' ')
     hi = hi.replaceAll('/','')
@@ -48,18 +48,8 @@ export const getImage = path => {
   let caption
   let params = ''
   let theme = 'light'
-  if (hasDate(path)) {
-    let date = getDate(path)
-    if (path.replace(/\//g, '') !== date) {
-      caption = date
-    }
-    if (name.length > 30) {
-      params += '&fontSize=225px'
-    }
-  } else {
-    theme = 'dark'
-    params += '&fontSize=275px'
-  }
+  theme = 'dark'
+  params += '&fontSize=275px'
   name = encodeURIComponent(name)
   caption = encodeURIComponent(caption)
   return `https://notebook-cards.lachlanjc.vercel.app/${name}.png?caption=${caption}&theme=${theme}${params}`
