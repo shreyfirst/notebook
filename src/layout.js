@@ -54,6 +54,12 @@ const Layout = ({ xl, ...props }) => {
   const base = '@simplershreh/notebook'
   const name = "Vote Shrey For IHS ASB President"
   const counterColor = theme.colors.secondary.replace('#', '%23')
+  var p = path
+  if (path.includes("404")){
+    p = "404"
+  } else if (path === '/') {
+    p = "Home"
+  }
 
   return (
     <Box
@@ -70,7 +76,7 @@ const Layout = ({ xl, ...props }) => {
         title={home ? base : `${name} – ${base}`}
         name={name}
         description={getDescription(path)}
-        image={getImage(path)}
+        image={getImage(p)}
       />
       <header
         sx={{
