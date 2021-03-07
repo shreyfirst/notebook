@@ -1,11 +1,9 @@
 import { isEmpty } from 'lodash'
 
 export const getName = path => {
-  if (path.includes('404') || (path==='/')) {
-    return path.replace(/\//g,'')
-  } else {  
+
     var hi = path
-    hi = hi.replace(/_o/g,' ')
+    hi = hi.replace(/\_/g,' ')
     hi = hi.replace(/\//g,'')
     hi = hi.replace(/\+/g,'')
     const mySentence = hi;
@@ -17,7 +15,7 @@ export const getName = path => {
     hi = words.join(" ");
     console.log(words)
     return hi
-  }
+  
   
 }
 

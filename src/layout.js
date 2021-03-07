@@ -52,7 +52,7 @@ const Layout = ({ xl, ...props }) => {
   const path = props.location.pathname
   const home = path === '/'
   const base = '@simplershreh/notebook'
-  const name = "Vote Shrey For IHS ASB President"
+  const name = home ? base : getName(path)
   const counterColor = theme.colors.secondary.replace('#', '%23')
   var p = path
   if (p.includes("404")){
@@ -76,7 +76,7 @@ const Layout = ({ xl, ...props }) => {
         title={home ? base : `${name} – ${base}`}
         name={name}
         description={getDescription(path)}
-        // image={getImage(p)}
+        image={getImage(p)}
       />
       <header
         sx={{
