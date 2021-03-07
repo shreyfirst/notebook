@@ -2,12 +2,12 @@ import { isEmpty } from 'lodash'
 
 export const getName = path => {
   if (path.includes('404') || (path==='/')) {
-    return path.replaceAll('/','')
+    return path.replace(/\//g,'')
   } else {  
     var hi = path
-    hi = hi.replaceAll('_',' ')
-    hi = hi.replaceAll('/','')
-    hi = hi.replaceAll('+','')
+    hi = hi.replace(/_o/g,' ')
+    hi = hi.replace(/\//g,'')
+    hi = hi.replace(/\+/g,'')
     const mySentence = hi;
     const words = mySentence.split(" ");
 
