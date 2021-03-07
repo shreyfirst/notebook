@@ -41,7 +41,10 @@ export const getDescription = path => {
 }
 
 export const getImage = path => {
-  if (path === '/') {
+  if (path == '/') {
+    return 'https://notebook-cards-sandy.vercel.app/Notebook.png?fontSize=400px'
+  }
+  if (path == "/") {
     return 'https://notebook-cards-sandy.vercel.app/Notebook.png?fontSize=400px'
   }
   if (path === '/404/') {
