@@ -1,7 +1,9 @@
 import { isEmpty } from 'lodash'
 
 export const getName = path => {
-  if ((!path.includes('404')) || (path!=='/')) {
+  if (path.includes('404') || (path==='/')) {
+    return path.replaceAll('/','')
+  } else {
     var hi = path
     hi = hi.replaceAll('_',' ')
     hi = hi.replaceAll('/','')
@@ -15,8 +17,6 @@ export const getName = path => {
     hi = words.join(" ");
     console.log(words)
     return hi
-  } else {
-    return path.replaceAll('/','')
   }
   
 }
