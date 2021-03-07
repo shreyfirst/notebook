@@ -5,7 +5,7 @@ export const getName = path => {
     var hi = path
     hi = hi.replace(/\_/g,' ')
     hi = hi.replace(/\//g,'')
-    hi = hi.replace(/\+/g,'')
+    hi = hi.replace(/\=/g,'')
     const mySentence = hi;
     const words = mySentence.split(" ");
 
