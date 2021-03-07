@@ -1,7 +1,7 @@
 import { isEmpty } from 'lodash'
 
 export const getName = path => {
-  // if (path.includes('+')) {
+  if (!path.includes('404')) {
     var hi = path
     hi = hi.replaceAll('_',' ')
     hi = hi.replaceAll('/','')
@@ -14,8 +14,10 @@ export const getName = path => {
     }
     hi = words.join(" ");
     console.log(hi)
-    return hi
-
+    return words
+  } else {
+    return path
+  }
   
 }
 
@@ -29,18 +31,18 @@ export const getDate = path => {
 
 export const getDescription = path => {
   if (path === '/') {
-    return 'Lachlan Campbell’s personal blog, Notebook, with posts about whatever they want.'
+    return 'Vote Shrey Gupta for IHS ASB President. Use this guide to learn why you should vote for him.'
   }
   let date = ''
   if (hasDate(path)) {
     date = new Date(getDate(path))
   }
-  return `Post by Lachlan Campbell${date} on their personal Notebook blog.`
+  return `Post by Shrey Gupta on his personal Notebook blog.`
 }
 
 export const getImage = path => {
   if (path === '/') {
-    return 'https://notebook-cards.lachlanjc.vercel.app/Notebook.png?fontSize=400px'
+    return 'https://notebook-cards-sandy.vercel.app/Notebook.png?fontSize=400px'
   }
   let name = getName(path.toString())
   let caption
@@ -60,5 +62,5 @@ export const getImage = path => {
   }
   name = encodeURIComponent(name)
   caption = encodeURIComponent(caption)
-  return `https://notebook-cards.lachlanjc.vercel.app/${name}.png?caption=${caption}&theme=${theme}${params}`
+  return `https://notebook-cards-sandy.vercel.app/${name}.png?caption=${caption}&theme=${theme}${params}`
 }
