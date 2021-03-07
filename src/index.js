@@ -5,6 +5,7 @@ import Layout from './layout'
 import { hasDate, getDate, getName } from './util'
 import { filter, isEmpty, orderBy } from 'lodash'
 import { format } from 'date-fns'
+import { React, Fragment } from 'react'
 
 export const wrapPageElement = ({ element, props }) => (
   <Layout {...props}>{element}</Layout>
@@ -14,7 +15,11 @@ export const Nav = () => {
   const data = useStaticQuery(pages)
   const nodes = filter(
     data.allSitePage.nodes,
-    ({ path }) => path !== '/' && !path.includes('404')
+    ({ path }) => path !== '/' && !path.includes('404') && !path.includes('+')
+  )
+  const button_nodes = filter(
+    data.allSitePage.nodes,
+    ({ path }) => path !== '/' && !path.includes('404') && path.includes('+')
   )
 
   const links = orderBy(
@@ -22,11 +27,15 @@ export const Nav = () => {
       const { path } = node
       node.name = getName(path)
       node.date = hasDate(path) ? getDate(path) : null
-      if (hasDate(path) && node.name === '') {
-        const date = new Date(node.date)
-        date.setDate(date.getDate() + 1) // I hate everything & everything hates me
-        node.name = format(date, 'MMMM dd, yyyy')
-      }
+      return node
+    })
+  )
+
+  const button_links = orderBy(
+    button_nodes.map(node => {
+      const { path } = node
+      node.name = getName(path)
+      node.date = null
       return node
     }),
     ['date', 'name'],
@@ -34,6 +43,7 @@ export const Nav = () => {
   )
 
   return (
+    <div>
     <ol
       sx={{
         listStyle: 'none',
@@ -41,7 +51,7 @@ export const Nav = () => {
         ml: 0
       }}
     >
-      {links.map(({ name, date, path }) => (
+      {button_nodes.map(({ name, date, path }) => (
         <li
           key={path}
           sx={
@@ -64,28 +74,68 @@ export const Nav = () => {
                   border: '2px solid currentColor',
                   borderRadius: 'circle',
                   fontSize: 2,
-                  transform: 'rotate(-2deg)'
+                  // transform: 'rotate(-2deg)'
                 }
                 : {})
             }}
           >
-            {!isEmpty(date) && (
-              <small
-                sx={{
-                  mt: [1, 0],
-                  mr: [null, 3],
-                  fontVariantNumeric: 'tabular-nums',
-                  color: 'secondary'
-                }}
-              >
-                {date}
-              </small>
-            )}
+            
             <strong sx={{ lineHeight: 'title' }}>{name}</strong>
           </Link>
         </li>
       ))}
     </ol>
+    <strong sx={{ 
+
+color: "var(--theme-ui-colors-text, #ffeaeb)",
+"font-family": "WhyteInktrap,system-ui,-apple-system,BlinkMacSystemFont",
+"line-height": "1.125",
+"font-weight": "bold",
+"font-size": "22px"
+
+}}>If you prefer to read each part separately:</strong>
+    <ol
+    sx={{
+      listStyle: 'none',
+      p: 0,
+      ml: 0
+    }}
+  >
+    {links.map(({ name, date, path }) => (
+      <li
+        key={path}
+        sx={
+          isEmpty(date)
+            ? { display: 'inline-block', mr: 3, mb: 4 }
+            : { my: 1 }
+        }
+      >
+        <Link
+          to={path}
+          sx={{
+            display: 'flex',
+            flexDirection: ['column-reverse', 'row'],
+            color: 'primary',
+            textDecoration: 'none',
+            ...(isEmpty(date)
+              ? {
+                px: 3,
+                py: 1,
+                border: '2px solid currentColor',
+                borderRadius: 'circle',
+                fontSize: 2,
+                // transform: 'rotate(-2deg)'
+              }
+              : {})
+          }}
+        >
+         
+          <strong sx={{ lineHeight: 'title' }}>{name}</strong>
+        </Link>
+      </li>
+    ))}
+  </ol>
+    </div>
   )
 }
 

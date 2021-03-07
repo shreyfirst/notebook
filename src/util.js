@@ -1,45 +1,29 @@
-import title from 'title'
-import { isEmpty, startCase } from 'lodash'
-import { format } from 'date-fns'
+import { isEmpty } from 'lodash'
 
 export const getName = path => {
-  let name = startCase(
-    path
-      .replace(/(\d{4}-\d{2}-\d{2})/, '')
-      .replace('/', '')
-      .replace('nextjs', 'Next.js')
-  )
-  name = title(name, {
-    special: [
-      'iPhone',
-      'iPad',
-      'MacBook',
-      'iOS',
-      'iPadOS',
-      'macOS',
-      'AirPods',
-      'HomePod',
-      'MVP',
-      'MDX',
-      'UI',
-      'COVID'
-    ]
-  })
-    .replace(' and ', ' & ')
-    .replace('Cant', 'Can’t')
-    .replace('Theyre', 'They’re')
-    .replace('Apple Fitness', 'Apple Fitness+')
-  if (hasDate(path) && name === '') {
-    name = format(new Date(getDate(path)), 'MMMM d, yyyy')
-  }
-  return name
+  // if (path.includes('+')) {
+    var hi = path
+    hi = hi.replaceAll('_',' ')
+    hi = hi.replaceAll('/','')
+    hi = hi.replaceAll('+','')
+    const mySentence = hi;
+    const words = mySentence.split(" ");
+
+    for (let i = 0; i < words.length; i++) {
+        words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+    }
+    hi = words.join(" ");
+    console.log(hi)
+    return hi
+
+  
 }
 
 export const hasDate = path =>
-  !isEmpty(path.toString().match(/\d{4}-\d{2}-\d{2}/))
+  !isEmpty(path.toString().match(/(\w{4})/))
 
 export const getDate = path => {
-  const match = path.match(/(\d{4}-\d{2}-\d{2})/)
+  const match = path.match(/(\w{4})/)
   return match ? match[0] : ''
 }
 
@@ -50,7 +34,6 @@ export const getDescription = path => {
   let date = ''
   if (hasDate(path)) {
     date = new Date(getDate(path))
-    date = ` on ${format(date, 'MMMM d, yyyy')}`
   }
   return `Post by Lachlan Campbell${date} on their personal Notebook blog.`
 }
@@ -66,7 +49,7 @@ export const getImage = path => {
   if (hasDate(path)) {
     let date = getDate(path)
     if (path.replace(/\//g, '') !== date) {
-      caption = format(new Date(date), 'MMM d, yyyy')
+      caption = date
     }
     if (name.length > 30) {
       params += '&fontSize=225px'

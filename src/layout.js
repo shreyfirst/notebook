@@ -51,7 +51,7 @@ const ColorSwitcher = props => {
 const Layout = ({ xl, ...props }) => {
   const path = props.location.pathname
   const home = path === '/'
-  const base = '@lachlanjc/notebook'
+  const base = '@simplershreh/notebook'
   const name = home ? base : getName(path)
   const counterColor = theme.colors.secondary.replace('#', '%23')
 
@@ -89,29 +89,11 @@ const Layout = ({ xl, ...props }) => {
             mr: 'auto'
           }}
         >
-          @lachlanjc
+        @simplershreh
           {!home && '/notebook'}
         </Link>
         <ColorSwitcher />
       </header>
-      <Flex
-        as="p"
-        variant="container"
-        sx={{
-          alignItems: 'center',
-          color: 'secondary',
-          mt: 0,
-          mb: 3,
-          img: { verticalAlign: 'bottom' }
-        }}
-      >
-        <Icon glyph="view" sx={{ mr: 2 }} />
-        Site views:
-        <img
-          src={`https://lachlanjc-analytics.glitch.me/counter.png?fallback=notebook.lachlanjc.com&color=${counterColor}`}
-          alt="View counter"
-        />
-      </Flex>
       <article>
         <BaseStyles>{props.children}</BaseStyles>
       </article>
@@ -126,13 +108,13 @@ const Layout = ({ xl, ...props }) => {
         }}
       >
         <Avatar />
-        <a href="https://twitter.com/lachlanjc" title="Twitter">
+        <a href="https://instagram.com/simpliershreh" title="Instagram">
+          <Icon glyph="instagram" size={36} />
+        </a>
+        <a href="https://twitter.com/micovarious" title="Twitter">
           <Icon glyph="twitter" size={36} />
         </a>
-        <a href="https://github.com/lachlanjc/notebook" title="GitHub">
-          <Icon glyph="github" size={36} />
-        </a>
-        <a href="mailto:lachlanjc@hey.com" title="Email">
+        <a href="mailto:shrey@irvinelights.org" title="Email">
           <Icon glyph="email" size={36} />
         </a>
       </Flex>
