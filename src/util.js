@@ -1,7 +1,7 @@
 import { isEmpty } from 'lodash'
 
 export const getName = path => {
-  if (!path.includes('404') && !(path == '/')) {
+  if (!path.includes('404') && (path !== "/")) {
     var hi = path
     hi = hi.replaceAll('_',' ')
     hi = hi.replaceAll('/','')
