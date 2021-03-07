@@ -57,7 +57,7 @@ const Layout = ({ xl, ...props }) => {
   var p = path
   if (p.includes("404")){
     p = "404"
-  } else if (p === '/') {
+  } else if (p == '/') {
     p = "Home"
   }
 
@@ -76,7 +76,7 @@ const Layout = ({ xl, ...props }) => {
         title={home ? base : `${name} – ${base}`}
         name={name}
         description={getDescription(path)}
-        image={getImage(p)}
+        // image={getImage(p)}
       />
       <header
         sx={{
