@@ -29,13 +29,9 @@ export const getDate = path => {
 
 export const getDescription = path => {
   if (path === '/') {
-    return 'Lachlan Campbell’s personal blog, Notebook, with posts about whatever they want.'
+    return "Learn more about why you should vote Shrey Gupta to be your IHS ASB President."
   }
-  let date = ''
-  if (hasDate(path)) {
-    date = new Date(getDate(path))
-  }
-  return `Post by Lachlan Campbell${date} on their personal Notebook blog.`
+  return "Learn more about why you should vote Shrey Gupta to be your IHS ASB President."
 }
 
 export const getImage = path => {
@@ -58,8 +54,8 @@ export const getImage = path => {
   let caption
   let params = ''
   let theme = 'light'
-  theme = 'dark'
-  params += '&fontSize=275px'
+  // theme = 'dark'
+  params += '&fontSize=250px'
   name = encodeURIComponent(name)
   caption = encodeURIComponent(caption)
   return `https://notebook-cards-sandy.vercel.app/${name}.png?caption=${caption}&theme=${theme}${params}`
