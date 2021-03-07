@@ -15,6 +15,8 @@ export const getName = path => {
     hi = words.join(" ");
     console.log(words)
     return hi
+  } else {
+    return path
   }
   
 }
