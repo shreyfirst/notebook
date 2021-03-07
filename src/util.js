@@ -42,7 +42,16 @@ export const getDescription = path => {
 
 export const getImage = path => {
   if (path === '/') {
-    return 'https://notebook-cards.lachlanjc.vercel.app/Notebook.png?fontSize=400px'
+    return 'https://notebook-cards-sandy.vercel.app/Notebook.png?fontSize=400px'
+  }
+  if (path === '/404/') {
+    return 'https://notebook-cards-sandy.vercel.app/Notebook.png?fontSize=400px'
+  }
+  if (path === '/404') {
+    return 'https://notebook-cards-sandy.vercel.app/Notebook.png?fontSize=400px'
+  }
+  if (path === '404') {
+    return 'https://notebook-cards-sandy.vercel.app/Notebook.png?fontSize=400px'
   }
   let name = getName(path.toString())
   let caption
@@ -52,5 +61,5 @@ export const getImage = path => {
   params += '&fontSize=275px'
   name = encodeURIComponent(name)
   caption = encodeURIComponent(caption)
-  return `https://notebook-cards.lachlanjc.vercel.app/${name}.png?caption=${caption}&theme=${theme}${params}`
+  return `https://notebook-cards-sandy.vercel.app/${name}.png?caption=${caption}&theme=${theme}${params}`
 }
