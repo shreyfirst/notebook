@@ -28,7 +28,9 @@ export const Nav = () => {
       node.name = getName(path)
       node.date = hasDate(path) ? getDate(path) : null
       return node
-    })
+    }),
+    ['name'],
+    ['asc']
   )
 
   const button_links = orderBy(
