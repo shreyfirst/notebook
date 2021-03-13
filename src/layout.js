@@ -114,7 +114,7 @@ const Layout = ({ xl, ...props }) => {
         }}
       >
         <Avatar />
-        <a href="https://instagram.com/simpliershreh" title="Instagram">
+        <a href="https://instagram.com/simplershreh" title="Instagram">
           <Icon glyph="instagram" size={36} />
         </a>
         <a href="https://twitter.com/micovarious" title="Twitter">
