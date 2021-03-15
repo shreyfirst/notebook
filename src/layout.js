@@ -103,6 +103,7 @@ const Layout = ({ xl, ...props }) => {
       <article>
         <BaseStyles>{props.children}</BaseStyles>
       </article>
+      
       <Flex
         as="footer"
         sx={{
@@ -124,6 +125,10 @@ const Layout = ({ xl, ...props }) => {
           <Icon glyph="email" size={36} />
         </a>
       </Flex>
+      <p style={{
+        "text-align": "center",
+        "font-size": "15px"
+      }}>All ideas are my own and not directly affiliated with Irvine High School.</p>
     </Box>
   )
 }
