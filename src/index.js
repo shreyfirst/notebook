@@ -46,7 +46,7 @@ export const Nav = () => {
 
   return (
     <div>
-    <ol
+    {/* <ol
       sx={{
         listStyle: 'none',
         p: 0,
@@ -86,8 +86,8 @@ export const Nav = () => {
           </Link>
         </li>
       ))}
-    </ol>
-    <strong sx={{ 
+    </ol> */}
+    {/* <strong sx={{ 
 
 color: "var(--theme-ui-colors-text, #ffeaeb)",
 "font-family": "WhyteInktrap,system-ui,-apple-system,BlinkMacSystemFont",
@@ -95,7 +95,7 @@ color: "var(--theme-ui-colors-text, #ffeaeb)",
 "font-weight": "bold",
 "font-size": "22px"
 
-}}>If you prefer to read each part separately:</strong>
+}}>If you prefer to read each part separately:</strong> */}
     <ol
     sx={{
       listStyle: 'none',
